@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -24,5 +25,8 @@
     "swagger-ui-express": "^4.3.0",
     "xss-clean": "^0.1.1",
     "yamljs": "^0.3.0"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
