@@ -1,0 +1,254 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "jobsAPI",
+    "dateExported": "2021-12-19T09:03:12.974Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "containerId": "",
+            "sortNum": 10000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                }
+            ],
+            "colId": "d7c9e9fa-57c8-4240-a515-40227fc433d8",
+            "name": "register",
+            "url": "{{auth}}/register",
+            "method": "POST",
+            "modified": "2021-12-19T08:13:52.174Z",
+            "created": "2021-12-18T03:35:34.432Z",
+            "_id": "bfe09d71-206e-4b49-8eee-b2622248159f",
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\":\"preet\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.token",
+                    "action": "setto",
+                    "value": "{{authToken}}"
+                }
+            ]
+        },
+        {
+            "containerId": "",
+            "sortNum": 20000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MWJkNjVhOWVlZjljODQ0MzU0NWU1ZDciLCJuYW1lIjoicHJlZXQiLCJpYXQiOjE2Mzk4OTA3MTcsImV4cCI6MTY0MjQ4MjcxN30.47tfmyuWbT2Oxnzu9ZjAA7Rtm6OeX3mjb3dZuPG6Pts",
+                    "isDisabled": true
+                }
+            ],
+            "colId": "d7c9e9fa-57c8-4240-a515-40227fc433d8",
+            "name": "getAllJobs",
+            "url": "{{jobs}}/",
+            "method": "GET",
+            "modified": "2021-12-19T07:37:50.450Z",
+            "created": "2021-12-18T03:55:55.715Z",
+            "_id": "a7188cbe-978f-4c3c-a102-91abaeb8b8ca",
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{authToken}}"
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 20000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                }
+            ],
+            "colId": "d7c9e9fa-57c8-4240-a515-40227fc433d8",
+            "name": "login",
+            "url": "{{auth}}/login",
+            "method": "POST",
+            "modified": "2021-12-19T07:58:52.015Z",
+            "created": "2021-12-18T03:50:15.369Z",
+            "_id": "cb828292-aaf1-4801-9402-7529776e7c40",
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"email\":\"preet2@gmail.com\",\n    \"password\":\"123456789\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.token",
+                    "action": "setto",
+                    "value": "{{authToken}}"
+                }
+            ]
+        },
+        {
+            "containerId": "",
+            "sortNum": 30000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MWJkNjVhOWVlZjljODQ0MzU0NWU1ZDciLCJuYW1lIjoicHJlZXQiLCJpYXQiOjE2Mzk4OTA3MTcsImV4cCI6MTY0MjQ4MjcxN30.47tfmyuWbT2Oxnzu9ZjAA7Rtm6OeX3mjb3dZuPG6Pts",
+                    "isDisabled": true
+                }
+            ],
+            "colId": "d7c9e9fa-57c8-4240-a515-40227fc433d8",
+            "name": "createJob",
+            "url": "{{jobs}}/",
+            "method": "POST",
+            "modified": "2021-12-19T07:47:24.904Z",
+            "created": "2021-12-18T03:56:09.281Z",
+            "_id": "100f7f1a-b438-4681-9365-600accb1a853",
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"company\":\"Netflix\",\n    \"position\":\"SRE-1 Intern\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{authToken}}"
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 30000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MWJkNjVhOWVlZjljODQ0MzU0NWU1ZDciLCJuYW1lIjoicHJlZXQiLCJpYXQiOjE2Mzk4OTA3MTcsImV4cCI6MTY0MjQ4MjcxN30.47tfmyuWbT2Oxnzu9ZjAA7Rtm6OeX3mjb3dZuPG6Pts",
+                    "isDisabled": true
+                }
+            ],
+            "colId": "d7c9e9fa-57c8-4240-a515-40227fc433d8",
+            "name": "updateJob",
+            "url": "{{jobs}}/61bede57f6c884be59ff440a",
+            "method": "PATCH",
+            "modified": "2021-12-19T07:57:24.973Z",
+            "created": "2021-12-18T03:57:11.697Z",
+            "_id": "fb55bf35-b29a-471d-a1d4-858283449dbe",
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"company\":\"Google\",\n    \"position\":\"SDE Intern\",\n    \"status\":\"declined\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{authToken}}"
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 40000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MWJkNjVhOWVlZjljODQ0MzU0NWU1ZDciLCJuYW1lIjoicHJlZXQiLCJpYXQiOjE2Mzk4OTA3MTcsImV4cCI6MTY0MjQ4MjcxN30.47tfmyuWbT2Oxnzu9ZjAA7Rtm6OeX3mjb3dZuPG6Pts",
+                    "isDisabled": true
+                }
+            ],
+            "colId": "d7c9e9fa-57c8-4240-a515-40227fc433d8",
+            "name": "deleteJob",
+            "url": "{{jobs}}/61bee38c0c26e778653a9360",
+            "method": "DELETE",
+            "modified": "2021-12-19T07:47:54.325Z",
+            "created": "2021-12-18T03:57:27.432Z",
+            "_id": "f22f5674-97a6-482d-94b7-695d129dcaf5",
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{authToken}}"
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 50000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MWJkNjVhOWVlZjljODQ0MzU0NWU1ZDciLCJuYW1lIjoicHJlZXQiLCJpYXQiOjE2Mzk4OTA3MTcsImV4cCI6MTY0MjQ4MjcxN30.47tfmyuWbT2Oxnzu9ZjAA7Rtm6OeX3mjb3dZuPG6Pts",
+                    "isDisabled": true
+                }
+            ],
+            "colId": "d7c9e9fa-57c8-4240-a515-40227fc433d8",
+            "name": "getJob",
+            "url": "{{jobs}}/61bede57f6c884be59ff440a",
+            "method": "GET",
+            "modified": "2021-12-19T07:59:06.602Z",
+            "created": "2021-12-18T03:57:29.528Z",
+            "_id": "d33d1640-9771-4663-bd29-118da8f305af",
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{authToken}}"
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "headers": [],
+        "tests": [],
+        "envId": "b75bd4b6-95f3-4a7c-8231-aa9650cb3d1d"
+    }
+}
