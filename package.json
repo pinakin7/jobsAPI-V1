@@ -21,6 +21,7 @@
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.2",
+    "postman-collection-transformer": "^4.1.4",
     "rate-limiter": "^0.2.0",
     "swagger-ui-express": "^4.3.0",
     "xss-clean": "^0.1.1",

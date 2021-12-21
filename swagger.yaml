@@ -1,16 +1,16 @@
 openapi: 3.0.0
 info:
-  title: Jobs API
+  title: Jobs API-V1
   contact: {}
   version: '1.0'
 servers:
-  - url: https://job-api-v1.herokuapp.com/api/v1
-    variables: {}
+- url: https://job-api-v1.herokuapp.com/api/v1
+  variables: {}
 paths:
   /auth/register:
     post:
       tags:
-        - Auth
+      - auth
       summary: Register User
       operationId: RegisterUser
       parameters: []
@@ -19,11 +19,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegisterUserRequest'
+              $ref: '#/components/schemas/registerrequest'
             example:
-              name: bob
-              email: bob@gmail.com
-              password: secret
+              name: samruddhi
+              email: samruddhi6@gmail.com
+              password: '123456789'
         required: true
       responses:
         '200':
@@ -34,19 +34,19 @@ paths:
   /auth/login:
     post:
       tags:
-        - Auth
-      summary: Login User
-      operationId: LoginUser
+      - auth
+      summary: User Login
+      operationId: UserLogin
       parameters: []
       requestBody:
         description: ''
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginUserRequest'
+              $ref: '#/components/schemas/loginrequest'
             example:
-              email: susan@gmail.com
-              password: secret
+              email: preet1@gmail.com
+              password: '123456789'
         required: true
       responses:
         '200':
@@ -54,31 +54,10 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /jobs:
-    post:
-      tags:
-        - Jobs
-      summary: Create Job
-      operationId: CreateJob
-      parameters: []
-      requestBody:
-        description: ''
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateJobRequest'
-            example:
-              company: google
-              position: front-end developer
-        required: true
-      responses:
-        '200':
-          description: ''
-          headers: {}
-      deprecated: false
+  /jobs/:
     get:
       tags:
-        - Jobs
+      - jobs
       summary: Get All Jobs
       operationId: GetAllJobs
       parameters: []
@@ -86,67 +65,456 @@ paths:
         '200':
           description: ''
           headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+                example:
+                  jobs:
+                  - _id: 61bede57f6c884be59ff440a
+                    company: Google
+                    position: SDE Intern
+                    status: declined
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:25:11.731Z
+                    updatedAt: 2021-12-19T07:57:24.731Z
+                    __v: 0
+                  - _id: 61bede91e9e1ababec5329ba
+                    company: Google
+                    position: Data Science Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:26:09.631Z
+                    updatedAt: 2021-12-19T07:26:09.631Z
+                    __v: 0
+                  - _id: 61bedfb990cb82d5bd26d35c
+                    company: IBM
+                    position: Data Science Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:31:05.591Z
+                    updatedAt: 2021-12-19T07:31:05.591Z
+                    __v: 0
+                  - _id: 61bedfc190cb82d5bd26d35e
+                    company: IBM
+                    position: SDE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:31:13.734Z
+                    updatedAt: 2021-12-19T07:31:13.734Z
+                    __v: 0
+                  - _id: 61bedfc690cb82d5bd26d360
+                    company: Facebook
+                    position: SDE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:31:18.454Z
+                    updatedAt: 2021-12-19T07:31:18.454Z
+                    __v: 0
+                  - _id: 61bedfcc90cb82d5bd26d362
+                    company: Facebook
+                    position: Data Science Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:31:24.910Z
+                    updatedAt: 2021-12-19T07:31:24.910Z
+                    __v: 0
+                  - _id: 61bedfda90cb82d5bd26d364
+                    company: Amazon
+                    position: Data Science Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:31:38.172Z
+                    updatedAt: 2021-12-19T07:31:38.172Z
+                    __v: 0
+                  - _id: 61bedfde90cb82d5bd26d366
+                    company: Amazon
+                    position: SDE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:31:42.118Z
+                    updatedAt: 2021-12-19T07:31:42.118Z
+                    __v: 0
+                  - _id: 61bedfec90cb82d5bd26d368
+                    company: Google
+                    position: SRE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:31:56.373Z
+                    updatedAt: 2021-12-19T07:31:56.373Z
+                    __v: 0
+                  - _id: 61bedff890cb82d5bd26d36b
+                    company: IBM
+                    position: SRE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:32:08.886Z
+                    updatedAt: 2021-12-19T07:32:08.886Z
+                    __v: 0
+                  - _id: 61bedffc90cb82d5bd26d36d
+                    company: Facebook
+                    position: SRE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:32:12.875Z
+                    updatedAt: 2021-12-19T07:32:12.875Z
+                    __v: 0
+                  - _id: 61bee00090cb82d5bd26d36f
+                    company: Amazon
+                    position: SRE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:32:16.895Z
+                    updatedAt: 2021-12-19T07:32:16.895Z
+                    __v: 0
+                  - _id: 61bee00690cb82d5bd26d371
+                    company: Micrsoft
+                    position: SRE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:32:22.493Z
+                    updatedAt: 2021-12-19T07:32:22.493Z
+                    __v: 0
+                  - _id: 61bee00990cb82d5bd26d373
+                    company: Micrsoft
+                    position: SDE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:32:25.101Z
+                    updatedAt: 2021-12-19T07:32:25.101Z
+                    __v: 0
+                  - _id: 61bee01190cb82d5bd26d375
+                    company: Micrsoft
+                    position: Data Science Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:32:33.286Z
+                    updatedAt: 2021-12-19T07:32:33.286Z
+                    __v: 0
+                  - _id: 61bee1942c81939a1b3c99fc
+                    company: Netflix
+                    position: Data Science Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:39:00.904Z
+                    updatedAt: 2021-12-19T07:39:00.904Z
+                    __v: 0
+                  - _id: 61bee19a2c81939a1b3c99fe
+                    company: Netflix
+                    position: SDE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:39:06.332Z
+                    updatedAt: 2021-12-19T07:39:06.332Z
+                    __v: 0
+                  - _id: 61bee19d2c81939a1b3c9a00
+                    company: Netflix
+                    position: SRE Intern
+                    status: pending
+                    createdBy: 61bd65a9eef9c8443545e5d7
+                    createdAt: 2021-12-19T07:39:09.627Z
+                    updatedAt: 2021-12-19T07:39:09.627Z
+                    __v: 0
+                  nrecs: 18
+              example:
+                jobs:
+                - _id: 61bede57f6c884be59ff440a
+                  company: Google
+                  position: SDE Intern
+                  status: declined
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:25:11.731Z
+                  updatedAt: 2021-12-19T07:57:24.731Z
+                  __v: 0
+                - _id: 61bede91e9e1ababec5329ba
+                  company: Google
+                  position: Data Science Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:26:09.631Z
+                  updatedAt: 2021-12-19T07:26:09.631Z
+                  __v: 0
+                - _id: 61bedfb990cb82d5bd26d35c
+                  company: IBM
+                  position: Data Science Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:31:05.591Z
+                  updatedAt: 2021-12-19T07:31:05.591Z
+                  __v: 0
+                - _id: 61bedfc190cb82d5bd26d35e
+                  company: IBM
+                  position: SDE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:31:13.734Z
+                  updatedAt: 2021-12-19T07:31:13.734Z
+                  __v: 0
+                - _id: 61bedfc690cb82d5bd26d360
+                  company: Facebook
+                  position: SDE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:31:18.454Z
+                  updatedAt: 2021-12-19T07:31:18.454Z
+                  __v: 0
+                - _id: 61bedfcc90cb82d5bd26d362
+                  company: Facebook
+                  position: Data Science Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:31:24.910Z
+                  updatedAt: 2021-12-19T07:31:24.910Z
+                  __v: 0
+                - _id: 61bedfda90cb82d5bd26d364
+                  company: Amazon
+                  position: Data Science Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:31:38.172Z
+                  updatedAt: 2021-12-19T07:31:38.172Z
+                  __v: 0
+                - _id: 61bedfde90cb82d5bd26d366
+                  company: Amazon
+                  position: SDE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:31:42.118Z
+                  updatedAt: 2021-12-19T07:31:42.118Z
+                  __v: 0
+                - _id: 61bedfec90cb82d5bd26d368
+                  company: Google
+                  position: SRE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:31:56.373Z
+                  updatedAt: 2021-12-19T07:31:56.373Z
+                  __v: 0
+                - _id: 61bedff890cb82d5bd26d36b
+                  company: IBM
+                  position: SRE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:32:08.886Z
+                  updatedAt: 2021-12-19T07:32:08.886Z
+                  __v: 0
+                - _id: 61bedffc90cb82d5bd26d36d
+                  company: Facebook
+                  position: SRE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:32:12.875Z
+                  updatedAt: 2021-12-19T07:32:12.875Z
+                  __v: 0
+                - _id: 61bee00090cb82d5bd26d36f
+                  company: Amazon
+                  position: SRE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:32:16.895Z
+                  updatedAt: 2021-12-19T07:32:16.895Z
+                  __v: 0
+                - _id: 61bee00690cb82d5bd26d371
+                  company: Micrsoft
+                  position: SRE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:32:22.493Z
+                  updatedAt: 2021-12-19T07:32:22.493Z
+                  __v: 0
+                - _id: 61bee00990cb82d5bd26d373
+                  company: Micrsoft
+                  position: SDE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:32:25.101Z
+                  updatedAt: 2021-12-19T07:32:25.101Z
+                  __v: 0
+                - _id: 61bee01190cb82d5bd26d375
+                  company: Micrsoft
+                  position: Data Science Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:32:33.286Z
+                  updatedAt: 2021-12-19T07:32:33.286Z
+                  __v: 0
+                - _id: 61bee1942c81939a1b3c99fc
+                  company: Netflix
+                  position: Data Science Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:39:00.904Z
+                  updatedAt: 2021-12-19T07:39:00.904Z
+                  __v: 0
+                - _id: 61bee19a2c81939a1b3c99fe
+                  company: Netflix
+                  position: SDE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:39:06.332Z
+                  updatedAt: 2021-12-19T07:39:06.332Z
+                  __v: 0
+                - _id: 61bee19d2c81939a1b3c9a00
+                  company: Netflix
+                  position: SRE Intern
+                  status: pending
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:39:09.627Z
+                  updatedAt: 2021-12-19T07:39:09.627Z
+                  __v: 0
+                nrecs: 18
       deprecated: false
-  /jobs/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-        description: The job ID
-    get:
+    post:
       tags:
-        - Jobs
-      summary: Get Single Job
-      operationId: GetSingleJob
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          headers: {}
-      deprecated: false
-
-    patch:
-      tags:
-        - Jobs
-      summary: Update Job
-      operationId: UpdateJob
+      - jobs
+      summary: Create Job
+      operationId: CreateJob
       parameters: []
       requestBody:
-        description: ''
+        description: Details of the job to be created
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateJobRequest'
+              $ref: '#/components/schemas/createJobRequest'
             example:
-              company: random
-              position: intern
+              company: Netflix
+              position: SRE-1 Intern
         required: true
       responses:
         '200':
           description: ''
           headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+                example:
+                  _id: 61bede57f6c884be59ff440a
+                  company: Google
+                  position: SDE Intern
+                  status: declined
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:25:11.731Z
+                  updatedAt: 2021-12-19T07:57:24.731Z
+                  __v: 0
+              example:
+                _id: 61bede57f6c884be59ff440a
+                company: Google
+                position: SDE Intern
+                status: declined
+                createdBy: 61bd65a9eef9c8443545e5d7
+                createdAt: 2021-12-19T07:25:11.731Z
+                updatedAt: 2021-12-19T07:57:24.731Z
+                __v: 0
       deprecated: false
-    delete:
+  /jobs/{id}:
+    get:
       tags:
-        - Jobs
-      summary: Delete Job
-      operationId: DeleteJob
-      parameters: []
+      - jobs
+      summary: Get Specific Job
+      operationId: GetSpecificJob
+      parameters:
+      - name: id
+        in: path
+        description: Job Id from the database
+        required: true
+        style: simple
+        schema:
+          type: string
       responses:
         '200':
           description: ''
           headers: {}
+          content:
+            text/plain:
+              schema:
+                type: object
+                example:
+                  _id: 61bede57f6c884be59ff440a
+                  company: Google
+                  position: SDE Intern
+                  status: declined
+                  createdBy: 61bd65a9eef9c8443545e5d7
+                  createdAt: 2021-12-19T07:25:11.731Z
+                  updatedAt: 2021-12-19T07:57:24.731Z
+                  __v: 0
+              example:
+                _id: 61bede57f6c884be59ff440a
+                company: Google
+                position: SDE Intern
+                status: declined
+                createdBy: 61bd65a9eef9c8443545e5d7
+                createdAt: 2021-12-19T07:25:11.731Z
+                updatedAt: 2021-12-19T07:57:24.731Z
+                __v: 0
+      deprecated: false
+    patch:
+      tags:
+      - jobs
+      summary: Update Job
+      operationId: UpdateJob
+      parameters:
+      - name: id
+        in: path
+        description: Job id from the database
+        required: true
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        description: Details of the job to be updated
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateJobRequest'
+            example:
+              company: Netflix
+              position: SRE-1 Intern
+              status: declined
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Job with job id {id} has been updated
+              example: Job with job id {id} has been updated
+      deprecated: false
+    delete:
+      tags:
+      - jobs
+      summary: Delete Job
+      operationId: DeleteJob
+      parameters:
+      - name: id
+        in: path
+        description: Job Id from the database
+        required: true
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Job with job id {id} has been deleted
+              example: Job with job id {id} has been deleted
       deprecated: false
 components:
   schemas:
-    RegisterUserRequest:
-      title: RegisterUserRequest
+    registerrequest:
+      title: registerrequest
       required:
-        - name
-        - email
-        - password
+      - name
+      - email
+      - password
       type: object
       properties:
         name:
@@ -156,14 +524,14 @@ components:
         password:
           type: string
       example:
-        name: bob
-        email: bob@gmail.com
-        password: secret
-    LoginUserRequest:
-      title: LoginUserRequest
+        name: samruddhi
+        email: samruddhi6@gmail.com
+        password: '123456789'
+    loginrequest:
+      title: loginrequest
       required:
-        - email
-        - password
+      - email
+      - password
       type: object
       properties:
         email:
@@ -171,13 +539,13 @@ components:
         password:
           type: string
       example:
-        email: susan@gmail.com
-        password: secret
-    CreateJobRequest:
-      title: CreateJobRequest
+        email: preet1@gmail.com
+        password: '123456789'
+    createJobRequest:
+      title: createJobRequest
       required:
-        - company
-        - position
+      - company
+      - position
       type: object
       properties:
         company:
@@ -185,30 +553,32 @@ components:
         position:
           type: string
       example:
-        company: google
-        position: front-end developer
-    UpdateJobRequest:
-      title: UpdateJobRequest
+        company: Netflix
+        position: SRE-1 Intern
+    updateJobRequest:
+      title: updateJobRequest
       required:
-        - company
-        - position
+      - company
+      - position
       type: object
       properties:
         company:
           type: string
         position:
           type: string
+        status:
+          type: string
+          nullable: true
       example:
-        company: random
-        position: intern
+        company: Netflix
+        position: SRE-1 Intern
+        status: declined
   securitySchemes:
     httpBearer:
       type: http
       scheme: bearer
 security:
-  - httpBearer: []
+- httpBearer: []
 tags:
-  - name: Auth
-    description: ''
-  - name: Jobs
-    description: ''
+- name: auth
+- name: jobs
